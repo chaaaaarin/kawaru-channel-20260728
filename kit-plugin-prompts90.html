@@ -1,0 +1,447 @@
+<!doctype html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Codex神プラグイン30選 導入プロンプト90選</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet"><style>
+:root{--brand:#1C3461;--brand-deep:#16284A;--brand-soft:rgba(28,52,97,.10);--accent:#5BBCD4;--accent-deep:#2C7A93;
+--bg:#F7FAFC;--paper:#FFFFFF;--ink:#1C3461;--ink-mid:#4A6080;--line:rgba(28,52,97,.14);--head:'Noto Sans JP';}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',-apple-system,'Hiragino Sans',sans-serif;line-height:1.7;}
+.wrap{max-width:960px;margin:0 auto;background:var(--paper);min-height:100vh;}
+header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:2px solid var(--brand);padding:16px 28px;}
+header .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+header img{width:40px;height:40px;border-radius:50%;border:2px solid var(--paper);box-shadow:0 2px 8px rgba(0,0,0,.14);}
+header .ttl{font-family:var(--head);font-weight:900;font-size:20px;color:var(--brand-deep);line-height:1.2;}
+header .ttl small{display:block;font-size:12px;color:var(--ink-mid);font-weight:500;}
+.badge{display:inline-block;background:var(--brand);color:#fff;font-family:var(--head);font-weight:900;font-size:13px;border-radius:999px;padding:4px 14px;}
+.hbtns{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;}
+main{padding:24px 28px 60px;}
+.hero{padding:34px 0 22px;text-align:center;}
+.hero h1{font-family:var(--head);font-weight:900;font-size:30px;color:var(--brand-deep);line-height:1.3;margin-bottom:10px;}
+.hero p{font-size:15px;color:var(--ink-mid);max-width:660px;margin:0 auto;}
+.pcard{display:flex;align-items:center;gap:16px;background:var(--paper);border:1.5px solid var(--line);border-left:5px solid var(--brand);
+border-radius:16px;padding:18px 20px;margin:14px 0;text-decoration:none;color:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.05);transition:.15s;}
+.pcard:hover{border-color:var(--brand);transform:translateY(-2px);}
+.pemoji{flex-shrink:0;line-height:0;}
+.pbody{flex:1;}.pt{font-family:var(--head);font-weight:900;font-size:18px;color:var(--ink);}
+.pd{font-size:13.5px;color:var(--ink-mid);margin-top:3px;}
+.pright{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;}
+.parr{font-family:var(--head);font-weight:900;color:var(--brand-deep);font-size:14px;}
+h2.cat{font-family:var(--head);font-weight:900;font-size:22px;color:var(--ink);margin:36px 0 14px;padding-left:12px;border-left:5px solid var(--brand);}
+.lead{font-size:15px;color:var(--ink-mid);margin-bottom:16px;}
+.icard{background:var(--paper);border:1.5px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.ititle{font-family:var(--head);font-weight:900;font-size:16px;color:var(--ink);margin-bottom:5px;}
+.imeta{font-size:13px;color:var(--ink-mid);margin-bottom:10px;}
+pre.prompt{background:var(--ink);color:#ECECEA;border-radius:10px;padding:14px 16px;white-space:pre-wrap;word-break:break-word;
+font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;max-height:320px;overflow-y:auto;margin-bottom:10px;}
+.cbtns{display:flex;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);border:2px solid var(--brand);color:var(--ink);
+border-radius:999px;padding:8px 18px;font-weight:900;font-size:14px;cursor:pointer;text-decoration:none;font-family:'Noto Sans JP';}
+.btn.ghost{background:var(--paper);border:1.5px solid var(--line);color:var(--brand-deep);}
+.btn.sm{padding:6px 14px;font-size:13px;}
+.pnote{margin:24px 0;padding:16px 20px;background:var(--brand-soft);border:1.5px solid var(--brand);border-radius:14px;font-size:14px;color:var(--ink);}
+footer{padding:26px 0;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-mid);text-align:center;margin-top:10px;}
+.hidden{display:none!important;}
+.nb{display:inline-block;}
+@media(max-width:600px){main{padding:18px 16px 50px;}header{padding:12px 16px;}.pcard{padding:14px;}.hero{padding:24px 0 14px;}.hero h1{font-size:24px;}}
+
+.toolbar{position:sticky;top:74px;z-index:15;background:var(--paper);padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:8px;}
+</style></head><body><div class="wrap">
+<header><div class="top">
+<img src="data:image/png;base64,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" alt="AIエージェント/Kawaru">
+<div class="ttl">Codex神プラグイン30選<br>導入プロンプト90選<small>AIエージェント/Kawaru・プレゼント</small></div>
+<span class="badge">90個</span>
+<div class="hbtns"><a class="btn ghost" href="./present.html">← 一覧へ</a><button class="btn" onclick="downloadText('pfull','codex-plugin-prompts90.md',this)">⬇ 全件ダウンロード</button></div>
+</div></header><main>
+<p class="lead"><span class="nb">全90項目</span><span class="nb">（30プラグイン×3本）。</span><span class="nb">各カードのボタンから個別にコピー、</span><span class="nb">上部から全件ダウンロードできます。</span></p>
+<h2 class="cat">公式定番</h2><div class="icard"><div class="ititle">1. GitHub — 例1</div><div class="imeta">説明: GitHubプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p1">このリポジトリの未マージのPRを一覧にして、レビュー待ちが長い順に並べて教えて。それぞれ、誰がレビュー待ちで止まっているか、放置されている日数も添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p1',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p1','prompt-1.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">2. GitHub — 例2</div><div class="imeta">説明: GitHubプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p2">このPRの差分を確認して、バグの可能性や設計上の懸念があれば指摘して。良い変更であればそれも伝えつつ、そのままレビューコメントとして投稿できる文面案を作って。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p2',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p2','prompt-2.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">3. GitHub — 例3</div><div class="imeta">説明: GitHubプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p3">直近1週間にクローズされたIssueを一覧化して要約して。バグ報告と機能要望のどちらが多いか、対応に時間がかかった傾向があれば併せて教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p3',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p3','prompt-3.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">4. Slack — 例1</div><div class="imeta">説明: Slackプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p4">このチャンネルの今日のやり取りを要約して。決定事項と、まだ誰も対応していないタスクを分けてリストにし、タスクには関係してそうな担当者も添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p4',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p4','prompt-4.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">5. Slack — 例2</div><div class="imeta">説明: Slackプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p5">この質問に対する返信の下書きを、丁寧なトーン・簡潔なトーン・砕けたトーンの3パターンで作って。どれを送るか自分で選びたいので、それぞれ2〜3文程度でお願い。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p5',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p5','prompt-5.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">6. Slack — 例3</div><div class="imeta">説明: Slackプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p6">自分宛のメンションのうち、まだ返信していないものだけを抽出してリストにして。緊急度が高そうなものには印をつけて、返信の優先順位も提案して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p6',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p6','prompt-6.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">7. Notion — 例1</div><div class="imeta">説明: Notionプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p7">この文字起こしをもとにミーティングメモをNotionのページとして整理して。決定事項・宿題（担当者と期限つき）・保留事項の3つに分けて、既存のミーティング議事録と同じ体裁で保存して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p7',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p7','prompt-7.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">8. Notion — 例2</div><div class="imeta">説明: Notionプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p8">Notion内で〇〇に関連するページを検索して一覧にして。似た内容が複数見つかった場合は、どれが最新か・重複していないかも確認して教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p8',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p8','prompt-8.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">9. Notion — 例3</div><div class="imeta">説明: Notionプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p9">このドキュメントの見出し構成を分析して、同じ種類の資料を毎回イチから作らなくていいようにNotionのテンプレートページとして保存して。差し替えが必要な箇所には案内コメントを入れておいて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p9',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p9','prompt-9.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">10. Gmail — 例1</div><div class="imeta">説明: Gmailプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p10">今日届いたメールの中から、返信が必要なものだけを優先度順にまとめて。自動送信・お知らせメール等の返信不要なものは除外して、締切がありそうなものには理由も添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p10',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p10','prompt-10.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">11. Gmail — 例2</div><div class="imeta">説明: Gmailプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p11">このメールへの返信案を、丁寧だが簡潔なトーンで作って。相手からの質問には全て答えつつ、長くなりすぎないように要点だけに絞って。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p11',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p11','prompt-11.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">12. Gmail — 例3</div><div class="imeta">説明: Gmailプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p12">先週届いたメールの中に、まだ対応できていない依頼が埋もれていないか洗い出して。見落としがあれば、いつ・誰から届いたものか教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p12',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p12','prompt-12.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">13. Google Drive — 例1</div><div class="imeta">説明: Google Driveプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p13">ドライブ内から〇〇に関連する資料を検索して候補を一覧にして。ファイルごとに最終更新日と、内容が使い回せそうかどうかの一言コメントも添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p13',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p13','prompt-13.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">14. Google Drive — 例2</div><div class="imeta">説明: Google Driveプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p14">このスプレッドシートの内容を要約して。前月・前週との比較で大きく動いている数字があれば指摘して、なぜ動いたか推測できる要因があれば併せて教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p14',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p14','prompt-14.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">15. Google Drive — 例3</div><div class="imeta">説明: Google Driveプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p15">この資料を社外・関係者以外に共有する前に、機密情報（金額・個人名・非公開の数字等）が含まれていないか確認して。見つかった場合は該当箇所を具体的に指摘して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p15',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p15','prompt-15.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">16. Google Calendar — 例1</div><div class="imeta">説明: Google Calendarプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p16">来週、60分の打ち合わせ枠を3つ、午前中を優先して候補を探して。既存の予定と被らない時間帯を提案し、候補日はできれば分散させて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p16',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p16','prompt-16.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">17. Google Calendar — 例2</div><div class="imeta">説明: Google Calendarプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p17">今日の予定を確認して、それぞれの打ち合わせに必要そうな資料や事前確認事項を教えて。準備が間に合わなそうなものがあれば先に教えてほしい。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p17',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p17','prompt-17.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">18. Google Calendar — 例3</div><div class="imeta">説明: Google Calendarプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p18">今週のスケジュールを見て、2時間以上まとまった集中作業の時間が取れる枠を探し、カレンダーに「集中作業」として確保して。既存の予定は動かさないで。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p18',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p18','prompt-18.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">19. Linear — 例1</div><div class="imeta">説明: Linearプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p19">このチケットの内容を確認して、実装に着手する前に曖昧な点があれば箇条書きで質問して。全部明確であればそのまま実装方針を提案して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p19',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p19','prompt-19.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">20. Linear — 例2</div><div class="imeta">説明: Linearプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p20">このPRに対応するLinearのチケットを探して、レビュー中のステータスに更新して。マージが完了したら完了ステータスに変更するところまでお願い。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p20',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p20','prompt-20.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">21. Linear — 例3</div><div class="imeta">説明: Linearプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p21">自分にアサインされているチケットを優先度順に一覧にして。締切が近いもの・ブロッカーになっているものが分かるように印をつけて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p21',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p21','prompt-21.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">22. Sentry — 例1</div><div class="imeta">説明: Sentryプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p22">直近24時間で発生しているエラーを、影響を受けたユーザー数や発生頻度をもとに影響範囲が大きい順に並べて教えて。初めて発生したエラーには印をつけて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p22',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p22','prompt-22.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">23. Sentry — 例2</div><div class="imeta">説明: Sentryプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p23">このエラーのスタックトレースを確認して、原因になっていそうなコード箇所を特定して。可能であれば修正案を出し、同様のエラーが他にも潜んでいないか併せて確認して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p23',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p23','prompt-23.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">24. Sentry — 例3</div><div class="imeta">説明: Sentryプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p24">このエラーが、今回のリリース前から発生していたものか、リリース後に新しく増えたものか確認して。新しく増えたものであれば、リリースのどの変更が関係していそうか教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p24',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p24','prompt-24.txt',this)">⬇ ダウンロード</button></div></div><h2 class="cat">職種特化</h2><div class="icard"><div class="ititle">25. データ分析 — 例1</div><div class="imeta">説明: データ分析プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p25">この売上データを分析して、伸びた要因と落ちた要因を分けて教えて。可能であれば商品・チャネルなどの切り口別にも分解して、次にどこを見るべきか提案して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p25',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p25','prompt-25.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">26. データ分析 — 例2</div><div class="imeta">説明: データ分析プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p26">主要KPI（売上・利用者数・継続率など）の週次ダッシュボードを作って。前週比が一目で分かるようにし、異常値があれば自動でハイライトされる形にして。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p26',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p26','prompt-26.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">27. データ分析 — 例3</div><div class="imeta">説明: データ分析プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p27">先月と比較して、数字が大きく動いた指標を洗い出して教えて。良い方向・悪い方向どちらの変化かも分けて、特に注視すべきものを1つ挙げて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p27',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p27','prompt-27.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">28. クリエイティブ制作 — 例1</div><div class="imeta">説明: クリエイティブ制作プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p28">このブリーフをもとに、方向性の異なるキャンペーンボードの案を3つ作って。それぞれどういうコンセプトなのか一言説明も添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p28',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p28','prompt-28.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">29. クリエイティブ制作 — 例2</div><div class="imeta">説明: クリエイティブ制作プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p29">この広告バナーを、SNS用の正方形・ストーリー用の縦長・バナー広告用の横長の3サイズでバリエーション展開して。文字が見切れないように調整して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p29',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p29','prompt-29.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">30. クリエイティブ制作 — 例3</div><div class="imeta">説明: クリエイティブ制作プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p30">この商品のライフスタイル写真を、ECサイトの商品ページでそのまま使える形に整えて。背景や色味を商品が映えるように調整し、複数カット分お願い。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p30',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p30','prompt-30.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">31. 営業 — 例1</div><div class="imeta">説明: 営業プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p31">今フォローすべき優先度の高いアカウントを教えて。直近の重要なシグナル（サイト訪問・メール開封・担当者の異動等）があれば、アカウントごとに添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p31',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p31','prompt-31.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">32. 営業 — 例2</div><div class="imeta">説明: 営業プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p32">この商談の前に確認しておくべき顧客情報をまとめて。過去のやり取り履歴・懸念点・決裁者が誰かが分かるように整理して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p32',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p32','prompt-32.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">33. 営業 — 例3</div><div class="imeta">説明: 営業プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p33">進行が止まっている、またはリスクのある商談を洗い出して。それぞれ何が原因で止まっていそうか、次にどうフォローすべきか提案して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p33',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p33','prompt-33.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">34. プロダクトデザイン — 例1</div><div class="imeta">説明: プロダクトデザインプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p34">この機能のUI案を、実務で使えるレベルで複数パターン作って。それぞれのメリット・デメリットも一言添えて、比較しやすくして。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p34',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p34','prompt-34.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">35. プロダクトデザイン — 例2</div><div class="imeta">説明: プロダクトデザインプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p35">このURLの画面を確認して、ユーザーがゴールに到達するまでのフローを検証して。迷いそうな箇所や離脱しそうな箇所があれば具体的に指摘し、改善案も添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p35',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p35','prompt-35.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">36. プロダクトデザイン — 例3</div><div class="imeta">説明: プロダクトデザインプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p36">この静的な画面イメージをもとに、実際にクリック操作できるプロトタイプを作って。主要な画面遷移（一覧→詳細→完了など）だけで構わないので、動きが分かる形にして。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p36',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p36','prompt-36.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">37. 上場株式投資 — 例1</div><div class="imeta">説明: 上場株式投資プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p37">この企業の最新決算情報を確認して、前四半期との違いを教えて。売上・利益だけでなく、経営陣のコメントに変化があればそれも教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p37',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p37','prompt-37.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">38. 上場株式投資 — 例2</div><div class="imeta">説明: 上場株式投資プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p38">同業他社数社と比較して、この企業の強みと弱みを整理して。財務指標だけでなく、事業戦略上の違いがあれば併せて教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p38',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p38','prompt-38.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">39. 上場株式投資 — 例3</div><div class="imeta">説明: 上場株式投資プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p39">この投資仮説について、直近の材料が仮説を裏付ける方向に増えているか、それとも反する材料が出てきているか評価して。根拠となる情報源も添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p39',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p39','prompt-39.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">40. 投資銀行業務 — 例1</div><div class="imeta">説明: 投資銀行業務プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p40">このディールに関連する類似取引の事例を集めて。取引規模・条件が近いものを優先し、それぞれの取引がどう評価されたかも分かれば添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p40',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p40','prompt-40.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">41. 投資銀行業務 — 例2</div><div class="imeta">説明: 投資銀行業務プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p41">このデューデリジェンスの結果を、提案資料に反映して。リスクとして指摘された点は、提案側でどう対応する想定かのコメントも添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p41',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p41','prompt-41.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">42. 投資銀行業務 — 例3</div><div class="imeta">説明: 投資銀行業務プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p42">このピッチ資料の構成案を作って。結論から入り、根拠となるデータ、想定される質問への回答まで一気通貫のストーリーになるようにして。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p42',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p42','prompt-42.txt',this)">⬇ ダウンロード</button></div></div><h2 class="cat">制作・自動化</h2><div class="icard"><div class="ititle">43. Figma — 例1</div><div class="imeta">説明: Figmaプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p43">このFigmaのデザインを読み取って、Reactコンポーネントとして実装して。既存のコンポーネント命名規則があればそれに合わせ、レスポンシブ対応も含めて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p43',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p43','prompt-43.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">44. Figma — 例2</div><div class="imeta">説明: Figmaプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p44">現在の実装がこのFigmaデザインとズレていないか確認して。差分があれば、色・余白・フォントサイズ等どこがズレているか具体的に指摘し、実装側を修正して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p44',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p44','prompt-44.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">45. Figma — 例3</div><div class="imeta">説明: Figmaプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p45">このデザインをもとに、スマホ・タブレット・PCそれぞれで崩れないレスポンシブ対応の画面案を作って。どこがどう変わるかも簡単に説明して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p45',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p45','prompt-45.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">46. Vercel — 例1</div><div class="imeta">説明: Vercelプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p46">このWebアプリをVercelにデプロイして、共有できるURLを発行して。デプロイが成功したかどうかと、実際にアクセスできることまで確認して教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p46',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p46','prompt-46.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">47. Vercel — 例2</div><div class="imeta">説明: Vercelプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p47">デプロイ時に出たこのビルドエラーの原因を調べて。ローカルでは動いていたのになぜ失敗したのか、環境変数や依存関係の違いも含めて確認して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p47',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p47','prompt-47.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">48. Vercel — 例3</div><div class="imeta">説明: Vercelプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p48">本番環境で必要な環境変数の設定方法を教えて、実際に設定まで進めて。値そのものは私が入力する場所だけ案内し、画面には表示しないで。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p48',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p48','prompt-48.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">49. Wix — 例1</div><div class="imeta">説明: Wixプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p49">Wixで〇〇のサービスサイトを作って。トップページ・サービス紹介・料金・問い合わせページの4つを含め、スマホで見たときも崩れないか確認して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p49',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p49','prompt-49.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">50. Wix — 例2</div><div class="imeta">説明: Wixプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p50">このWixサイトに予約機能を追加して。予約可能な曜日・時間帯を設定できるようにし、予約が入ったら通知が来る形にして。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p50',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p50','prompt-50.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">51. Wix — 例3</div><div class="imeta">説明: Wixプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p51">このWixサイトの配色を、このブランドカラーに合わせて調整して。ボタンや見出しなど目立たせたい箇所にはアクセントカラーを使って。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p51',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p51','prompt-51.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">52. Netlify — 例1</div><div class="imeta">説明: Netlifyプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p52">このサイトをNetlifyに公開して。公開後のURLでちゃんと表示されるか確認し、もし表示崩れがあれば教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p52',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p52','prompt-52.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">53. Netlify — 例2</div><div class="imeta">説明: Netlifyプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p53">このお問い合わせフォームで入力された内容が、指定したメールアドレスに届くように設定して。送信完了後の画面表示もあわせて作って。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p53',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p53','prompt-53.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">54. Netlify — 例3</div><div class="imeta">説明: Netlifyプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p54">この処理を行う簡単なAPIエンドポイントをNetlify Functionsとして作って。エラー時にも分かりやすいメッセージが返るようにして。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p54',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p54','prompt-54.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">55. Codex Security — 例1</div><div class="imeta">説明: Codex Securityプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p55">このコードを認証・入力検証・秘密情報の扱い・ログ出力の4つの観点でリスクを洗い出して。それぞれ深刻度と、そのまま使える修正例を添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p55',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p55','prompt-55.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">56. Codex Security — 例2</div><div class="imeta">説明: Codex Securityプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p56">このPRをマージする前に、セキュリティ上の懸念が無いか確認して。問題なければその旨を、問題があれば具体的な箇所と対処法を教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p56',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p56','prompt-56.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">57. Codex Security — 例3</div><div class="imeta">説明: Codex Securityプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p57">このコード内でのAPIキーの扱いが安全か確認して。ハードコーディングや誤って公開される危険な箇所があれば、環境変数化する形で直して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p57',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p57','prompt-57.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">58. Record &amp; Replay — 例1</div><div class="imeta">説明: Record &amp; Replayプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p58">今から手順を録画で見せます。関係ない画面は閉じ、通知もオフにしてから始めます。録画が終わったら、その内容を再現できる再利用可能なスキルとして作成して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p58',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p58','prompt-58.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">59. Record &amp; Replay — 例2</div><div class="imeta">説明: Record &amp; Replayプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p59">さっき録画から作ったスキルを、録画時とは別のデータを使って一度テスト実行して。想定通りの結果になったか、途中で止まった箇所がなかったか教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p59',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p59','prompt-59.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">60. Record &amp; Replay — 例3</div><div class="imeta">説明: Record &amp; Replayプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p60">このスキルの中身を確認して、録画時の日付やファイル名がそのまま固定値になっている箇所を、毎回実行時に指定できる項目に書き換えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p60',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p60','prompt-60.txt',this)">⬇ ダウンロード</button></div></div><h2 class="cat">コミュニティ精鋭</h2><div class="icard"><div class="ititle">61. Matt Pocock's Skills — 例1</div><div class="imeta">説明: Matt Pocock's Skillsプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p61">作りたいものはあるのですが、要件がまだ固まっていません。1つずつ質問しながら壁打ち形式で要件を明確にしていってください。対象ユーザー・解決したい課題・完成の条件が見えるまで進めて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p61',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p61','prompt-61.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">62. Matt Pocock's Skills — 例2</div><div class="imeta">説明: Matt Pocock's Skillsプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p62">このプロジェクトに新しい機能を追加します。テスト駆動開発(TDD)のやり方で、先にテストを書いてから実装を進めて。テストが通ることを確認してから完了報告して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p62',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p62','prompt-62.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">63. Matt Pocock's Skills — 例3</div><div class="imeta">説明: Matt Pocock's Skillsプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p63">この設計・計画案を見て、曖昧な部分やまだ詰め切れていない部分をインタビュー形式で質問して。より明確で鋭い計画になるまで、遠慮なく突っ込んで。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p63',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p63','prompt-63.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">64. Superpowers — 例1</div><div class="imeta">説明: Superpowersプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p64">このタスクを、いきなり実装に入らずに計画→実装→レビュー→検証の流れで進めて。各段階が終わったら一度区切りを教えてから次に進んで。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p64',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p64','prompt-64.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">65. Superpowers — 例2</div><div class="imeta">説明: Superpowersプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p65">この設計に対して、あえて反対の立場（この設計だとうまくいかない、という前提）からレビューして。見落としているリスクや弱点があれば洗い出して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p65',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p65','prompt-65.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">66. Superpowers — 例3</div><div class="imeta">説明: Superpowersプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p66">この実装を実際にブラウザで操作して動作確認して。見た目の崩れや操作時のエラーがあれば、その場で修正まで進めて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p66',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p66','prompt-66.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">67. Context7 — 例1</div><div class="imeta">説明: Context7プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p67">このライブラリを使う前に、Context7で最新の公式ドキュメントを参照して。学習データの古い情報と食い違いがないか確認し、バージョンが変わっていればその点も教えてから実装を進めて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p67',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p67','prompt-67.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">68. Context7 — 例2</div><div class="imeta">説明: Context7プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p68">このエラーが、使っているライブラリのバージョン違いによるものか確認して。最新ドキュメントと照らし合わせて、原因がバージョン差異でなければ他の可能性も探って。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p68',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p68','prompt-68.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">69. Context7 — 例3</div><div class="imeta">説明: Context7プラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p69">このコードで使われているAPIが、最新のドキュメント上で非推奨（deprecated）になっていないか確認して。なっていれば、推奨されている置き換え方法も教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p69',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p69','prompt-69.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">70. Firecrawl — 例1</div><div class="imeta">説明: Firecrawlプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p70">このURLの内容を、AIが読みやすい構造化された形式（見出し・本文・リンク）で取得して。取得した内容から、要点を3〜5行で教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p70',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p70','prompt-70.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">71. Firecrawl — 例2</div><div class="imeta">説明: Firecrawlプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p71">この競合数社の料金ページをスクレイピングして、プラン名・価格・主な機能が一目で分かる比較表にして。自社のプランも同じ表に並べて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p71',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p71','prompt-71.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">72. Firecrawl — 例3</div><div class="imeta">説明: Firecrawlプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p72">このサイト内を検索して、〇〇に関連するページをすべて洗い出して。それぞれ何が書かれているか要約し、重複している情報があれば教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p72',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p72','prompt-72.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">73. Composio — 例1</div><div class="imeta">説明: Composioプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p73">この作業を進めるのに必要な外部サービス（複数ある想定）との連携を、Composio経由でまとめて設定して。認証が必要なものは、どの手順で進めればいいか案内して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p73',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p73','prompt-73.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">74. Composio — 例2</div><div class="imeta">説明: Composioプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p74">現在Composio経由で接続しているサービスの一覧を確認して。直近しばらく使っていなさそうなものがあれば教えて、外していいか判断材料も添えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p74',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p74','prompt-74.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">75. Composio — 例3</div><div class="imeta">説明: Composioプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p75">このタスクを、複数のSaaSをまたいで自動化する方法を提案して。どのサービスのどの機能を、どんな順番でつなげば実現できるか、具体的な手順で示して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p75',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p75','prompt-75.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">76. GitNexus — 例1</div><div class="imeta">説明: GitNexusプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p76">このリポジトリ全体を知識グラフ化して。主要なモジュール同士がどう依存し合っているか教えて、特に依存が集中していて変更時にリスクが高そうな箇所があれば指摘して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p76',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p76','prompt-76.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">77. GitNexus — 例2</div><div class="imeta">説明: GitNexusプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p77">この関数を変更した場合、直接・間接的に影響が及ぶ範囲を洗い出して。テストを重点的に見ておくべき箇所があれば併せて教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p77',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p77','prompt-77.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">78. GitNexus — 例3</div><div class="imeta">説明: GitNexusプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p78">このコードベースの全体構造を、今日から参加するメンバー向けに説明して。どこから読み始めるとよいか、主要なディレクトリの役割も含めて教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p78',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p78','prompt-78.txt',this)">⬇ ダウンロード</button></div></div><h2 class="cat">最新トレンド</h2><div class="icard"><div class="ititle">79. ChatCut — 例1</div><div class="imeta">説明: ChatCutプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p79">Codexをビデオエディターに変えて、読んで。導入できたら、この動画素材を読み込んで中身を確認してから、どう編集したいか聞いて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p79',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p79','prompt-79.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">80. ChatCut — 例2</div><div class="imeta">説明: ChatCutプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p80">この動画素材を確認して、しゃべっていない・間延びしている区間を検出して削り、テンポの良い状態で書き出して。カットしすぎて不自然にならないよう、前後に少し余白を残して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p80',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p80','prompt-80.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">81. ChatCut — 例3</div><div class="imeta">説明: ChatCutプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p81">この台本をもとに、字幕付きの短尺動画に編集して。台本の言葉と実際の音声がズレていないか確認しながら、読みやすい位置に字幕を配置して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p81',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p81','prompt-81.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">82. Build iOS Apps — 例1</div><div class="imeta">説明: Build iOS Appsプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p82">このiOSアプリをアプリ内ブラウザで開いて、主要な画面を一通り操作して動作確認して。エラーや表示崩れがあれば、どの画面のどの操作で起きたか教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p82',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p82','prompt-82.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">83. Build iOS Apps — 例2</div><div class="imeta">説明: Build iOS Appsプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p83">このSwiftUIの画面をプレビューして、端末サイズを変えたときにレイアウトが崩れないか確認して。崩れている箇所があれば、その場で修正まで進めて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p83',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p83','prompt-83.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">84. Build iOS Apps — 例3</div><div class="imeta">説明: Build iOS Appsプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p84">この修正をホットリロードで反映して、変更前後でどう見た目が変わったか比較できる形で見せて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p84',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p84','prompt-84.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">85. codex-plugin-cc — 例1</div><div class="imeta">説明: codex-plugin-ccプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p85">/codex:review を使って、今Claude Codeで進めているこの実装をCodexにレビューさせて。指摘があれば、Claude Code側でどう直すべきか一緒に整理して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p85',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p85','prompt-85.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">86. codex-plugin-cc — 例2</div><div class="imeta">説明: codex-plugin-ccプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p86">/codex:rescue を使って、このバグの調査をCodexに任せて。調査が終わるまでの間、私はClaude Codeで別の作業を進めておく。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p86',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p86','prompt-86.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">87. codex-plugin-cc — 例3</div><div class="imeta">説明: codex-plugin-ccプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p87">/codex:status で、バックグラウンドで動いているCodexのジョブの進捗を確認して。終わっていれば /codex:result で結果を受け取って。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p87',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p87','prompt-87.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">88. Codex profiles — 例1</div><div class="imeta">説明: Codex profilesプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p88">自分のCodexプロフィールを確認して、直近の活用状況（連続記録・トークン量・よく使っているプラグイン）を教えて。使い方に偏りがあれば指摘して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p88',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p88','prompt-88.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">89. Codex profiles — 例2</div><div class="imeta">説明: Codex profilesプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p89">自分がよく使っているプラグインの傾向を教えて。その使い方から見て、他に試すと相性が良さそうなプラグインがあれば理由つきで提案して。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p89',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p89','prompt-89.txt',this)">⬇ ダウンロード</button></div></div><div class="icard"><div class="ititle">90. Codex profiles — 例3</div><div class="imeta">説明: Codex profilesプラグインをインストール後、そのまま貼って試せる指示文です。</div><pre class="prompt" id="p90">このプロフィールカードを、チームに共有しても恥ずかしくない見た目に整えて。個人的すぎる情報が含まれていれば教えて。</pre><div class="cbtns"><button class="btn sm" onclick="copyPrompt('p90',this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('p90','prompt-90.txt',this)">⬇ ダウンロード</button></div></div>
+<pre id="pfull" class="hidden"># 🎁 Codex神プラグイン30選 導入プロンプト90選
+
+30個のプラグインを、1個につき3本ずつ「そのまま貼って試せる」プロンプトにしました。プラグインをインストールした後、対応するプロンプトを貼るだけで使い始められます。
+
+**受け取り方**: 各カードのボタンでコピー、または全件ダウンロードしてください。GitHub上ではこのファイルのコードブロックから直接コピーできます。
+
+**使い方**: 該当するプラグインをインストールしてから、対応する番号のプロンプトをCodexのチャット欄に貼り付けてください。
+
+## 公式定番
+### 1. GitHub — 例1
+```text
+このリポジトリの未マージのPRを一覧にして、レビュー待ちが長い順に並べて教えて。それぞれ、誰がレビュー待ちで止まっているか、放置されている日数も添えて。
+```
+### 2. GitHub — 例2
+```text
+このPRの差分を確認して、バグの可能性や設計上の懸念があれば指摘して。良い変更であればそれも伝えつつ、そのままレビューコメントとして投稿できる文面案を作って。
+```
+### 3. GitHub — 例3
+```text
+直近1週間にクローズされたIssueを一覧化して要約して。バグ報告と機能要望のどちらが多いか、対応に時間がかかった傾向があれば併せて教えて。
+```
+### 4. Slack — 例1
+```text
+このチャンネルの今日のやり取りを要約して。決定事項と、まだ誰も対応していないタスクを分けてリストにし、タスクには関係してそうな担当者も添えて。
+```
+### 5. Slack — 例2
+```text
+この質問に対する返信の下書きを、丁寧なトーン・簡潔なトーン・砕けたトーンの3パターンで作って。どれを送るか自分で選びたいので、それぞれ2〜3文程度でお願い。
+```
+### 6. Slack — 例3
+```text
+自分宛のメンションのうち、まだ返信していないものだけを抽出してリストにして。緊急度が高そうなものには印をつけて、返信の優先順位も提案して。
+```
+### 7. Notion — 例1
+```text
+この文字起こしをもとにミーティングメモをNotionのページとして整理して。決定事項・宿題（担当者と期限つき）・保留事項の3つに分けて、既存のミーティング議事録と同じ体裁で保存して。
+```
+### 8. Notion — 例2
+```text
+Notion内で〇〇に関連するページを検索して一覧にして。似た内容が複数見つかった場合は、どれが最新か・重複していないかも確認して教えて。
+```
+### 9. Notion — 例3
+```text
+このドキュメントの見出し構成を分析して、同じ種類の資料を毎回イチから作らなくていいようにNotionのテンプレートページとして保存して。差し替えが必要な箇所には案内コメントを入れておいて。
+```
+### 10. Gmail — 例1
+```text
+今日届いたメールの中から、返信が必要なものだけを優先度順にまとめて。自動送信・お知らせメール等の返信不要なものは除外して、締切がありそうなものには理由も添えて。
+```
+### 11. Gmail — 例2
+```text
+このメールへの返信案を、丁寧だが簡潔なトーンで作って。相手からの質問には全て答えつつ、長くなりすぎないように要点だけに絞って。
+```
+### 12. Gmail — 例3
+```text
+先週届いたメールの中に、まだ対応できていない依頼が埋もれていないか洗い出して。見落としがあれば、いつ・誰から届いたものか教えて。
+```
+### 13. Google Drive — 例1
+```text
+ドライブ内から〇〇に関連する資料を検索して候補を一覧にして。ファイルごとに最終更新日と、内容が使い回せそうかどうかの一言コメントも添えて。
+```
+### 14. Google Drive — 例2
+```text
+このスプレッドシートの内容を要約して。前月・前週との比較で大きく動いている数字があれば指摘して、なぜ動いたか推測できる要因があれば併せて教えて。
+```
+### 15. Google Drive — 例3
+```text
+この資料を社外・関係者以外に共有する前に、機密情報（金額・個人名・非公開の数字等）が含まれていないか確認して。見つかった場合は該当箇所を具体的に指摘して。
+```
+### 16. Google Calendar — 例1
+```text
+来週、60分の打ち合わせ枠を3つ、午前中を優先して候補を探して。既存の予定と被らない時間帯を提案し、候補日はできれば分散させて。
+```
+### 17. Google Calendar — 例2
+```text
+今日の予定を確認して、それぞれの打ち合わせに必要そうな資料や事前確認事項を教えて。準備が間に合わなそうなものがあれば先に教えてほしい。
+```
+### 18. Google Calendar — 例3
+```text
+今週のスケジュールを見て、2時間以上まとまった集中作業の時間が取れる枠を探し、カレンダーに「集中作業」として確保して。既存の予定は動かさないで。
+```
+### 19. Linear — 例1
+```text
+このチケットの内容を確認して、実装に着手する前に曖昧な点があれば箇条書きで質問して。全部明確であればそのまま実装方針を提案して。
+```
+### 20. Linear — 例2
+```text
+このPRに対応するLinearのチケットを探して、レビュー中のステータスに更新して。マージが完了したら完了ステータスに変更するところまでお願い。
+```
+### 21. Linear — 例3
+```text
+自分にアサインされているチケットを優先度順に一覧にして。締切が近いもの・ブロッカーになっているものが分かるように印をつけて。
+```
+### 22. Sentry — 例1
+```text
+直近24時間で発生しているエラーを、影響を受けたユーザー数や発生頻度をもとに影響範囲が大きい順に並べて教えて。初めて発生したエラーには印をつけて。
+```
+### 23. Sentry — 例2
+```text
+このエラーのスタックトレースを確認して、原因になっていそうなコード箇所を特定して。可能であれば修正案を出し、同様のエラーが他にも潜んでいないか併せて確認して。
+```
+### 24. Sentry — 例3
+```text
+このエラーが、今回のリリース前から発生していたものか、リリース後に新しく増えたものか確認して。新しく増えたものであれば、リリースのどの変更が関係していそうか教えて。
+```
+## 職種特化
+### 25. データ分析 — 例1
+```text
+この売上データを分析して、伸びた要因と落ちた要因を分けて教えて。可能であれば商品・チャネルなどの切り口別にも分解して、次にどこを見るべきか提案して。
+```
+### 26. データ分析 — 例2
+```text
+主要KPI（売上・利用者数・継続率など）の週次ダッシュボードを作って。前週比が一目で分かるようにし、異常値があれば自動でハイライトされる形にして。
+```
+### 27. データ分析 — 例3
+```text
+先月と比較して、数字が大きく動いた指標を洗い出して教えて。良い方向・悪い方向どちらの変化かも分けて、特に注視すべきものを1つ挙げて。
+```
+### 28. クリエイティブ制作 — 例1
+```text
+このブリーフをもとに、方向性の異なるキャンペーンボードの案を3つ作って。それぞれどういうコンセプトなのか一言説明も添えて。
+```
+### 29. クリエイティブ制作 — 例2
+```text
+この広告バナーを、SNS用の正方形・ストーリー用の縦長・バナー広告用の横長の3サイズでバリエーション展開して。文字が見切れないように調整して。
+```
+### 30. クリエイティブ制作 — 例3
+```text
+この商品のライフスタイル写真を、ECサイトの商品ページでそのまま使える形に整えて。背景や色味を商品が映えるように調整し、複数カット分お願い。
+```
+### 31. 営業 — 例1
+```text
+今フォローすべき優先度の高いアカウントを教えて。直近の重要なシグナル（サイト訪問・メール開封・担当者の異動等）があれば、アカウントごとに添えて。
+```
+### 32. 営業 — 例2
+```text
+この商談の前に確認しておくべき顧客情報をまとめて。過去のやり取り履歴・懸念点・決裁者が誰かが分かるように整理して。
+```
+### 33. 営業 — 例3
+```text
+進行が止まっている、またはリスクのある商談を洗い出して。それぞれ何が原因で止まっていそうか、次にどうフォローすべきか提案して。
+```
+### 34. プロダクトデザイン — 例1
+```text
+この機能のUI案を、実務で使えるレベルで複数パターン作って。それぞれのメリット・デメリットも一言添えて、比較しやすくして。
+```
+### 35. プロダクトデザイン — 例2
+```text
+このURLの画面を確認して、ユーザーがゴールに到達するまでのフローを検証して。迷いそうな箇所や離脱しそうな箇所があれば具体的に指摘し、改善案も添えて。
+```
+### 36. プロダクトデザイン — 例3
+```text
+この静的な画面イメージをもとに、実際にクリック操作できるプロトタイプを作って。主要な画面遷移（一覧→詳細→完了など）だけで構わないので、動きが分かる形にして。
+```
+### 37. 上場株式投資 — 例1
+```text
+この企業の最新決算情報を確認して、前四半期との違いを教えて。売上・利益だけでなく、経営陣のコメントに変化があればそれも教えて。
+```
+### 38. 上場株式投資 — 例2
+```text
+同業他社数社と比較して、この企業の強みと弱みを整理して。財務指標だけでなく、事業戦略上の違いがあれば併せて教えて。
+```
+### 39. 上場株式投資 — 例3
+```text
+この投資仮説について、直近の材料が仮説を裏付ける方向に増えているか、それとも反する材料が出てきているか評価して。根拠となる情報源も添えて。
+```
+### 40. 投資銀行業務 — 例1
+```text
+このディールに関連する類似取引の事例を集めて。取引規模・条件が近いものを優先し、それぞれの取引がどう評価されたかも分かれば添えて。
+```
+### 41. 投資銀行業務 — 例2
+```text
+このデューデリジェンスの結果を、提案資料に反映して。リスクとして指摘された点は、提案側でどう対応する想定かのコメントも添えて。
+```
+### 42. 投資銀行業務 — 例3
+```text
+このピッチ資料の構成案を作って。結論から入り、根拠となるデータ、想定される質問への回答まで一気通貫のストーリーになるようにして。
+```
+## 制作・自動化
+### 43. Figma — 例1
+```text
+このFigmaのデザインを読み取って、Reactコンポーネントとして実装して。既存のコンポーネント命名規則があればそれに合わせ、レスポンシブ対応も含めて。
+```
+### 44. Figma — 例2
+```text
+現在の実装がこのFigmaデザインとズレていないか確認して。差分があれば、色・余白・フォントサイズ等どこがズレているか具体的に指摘し、実装側を修正して。
+```
+### 45. Figma — 例3
+```text
+このデザインをもとに、スマホ・タブレット・PCそれぞれで崩れないレスポンシブ対応の画面案を作って。どこがどう変わるかも簡単に説明して。
+```
+### 46. Vercel — 例1
+```text
+このWebアプリをVercelにデプロイして、共有できるURLを発行して。デプロイが成功したかどうかと、実際にアクセスできることまで確認して教えて。
+```
+### 47. Vercel — 例2
+```text
+デプロイ時に出たこのビルドエラーの原因を調べて。ローカルでは動いていたのになぜ失敗したのか、環境変数や依存関係の違いも含めて確認して。
+```
+### 48. Vercel — 例3
+```text
+本番環境で必要な環境変数の設定方法を教えて、実際に設定まで進めて。値そのものは私が入力する場所だけ案内し、画面には表示しないで。
+```
+### 49. Wix — 例1
+```text
+Wixで〇〇のサービスサイトを作って。トップページ・サービス紹介・料金・問い合わせページの4つを含め、スマホで見たときも崩れないか確認して。
+```
+### 50. Wix — 例2
+```text
+このWixサイトに予約機能を追加して。予約可能な曜日・時間帯を設定できるようにし、予約が入ったら通知が来る形にして。
+```
+### 51. Wix — 例3
+```text
+このWixサイトの配色を、このブランドカラーに合わせて調整して。ボタンや見出しなど目立たせたい箇所にはアクセントカラーを使って。
+```
+### 52. Netlify — 例1
+```text
+このサイトをNetlifyに公開して。公開後のURLでちゃんと表示されるか確認し、もし表示崩れがあれば教えて。
+```
+### 53. Netlify — 例2
+```text
+このお問い合わせフォームで入力された内容が、指定したメールアドレスに届くように設定して。送信完了後の画面表示もあわせて作って。
+```
+### 54. Netlify — 例3
+```text
+この処理を行う簡単なAPIエンドポイントをNetlify Functionsとして作って。エラー時にも分かりやすいメッセージが返るようにして。
+```
+### 55. Codex Security — 例1
+```text
+このコードを認証・入力検証・秘密情報の扱い・ログ出力の4つの観点でリスクを洗い出して。それぞれ深刻度と、そのまま使える修正例を添えて。
+```
+### 56. Codex Security — 例2
+```text
+このPRをマージする前に、セキュリティ上の懸念が無いか確認して。問題なければその旨を、問題があれば具体的な箇所と対処法を教えて。
+```
+### 57. Codex Security — 例3
+```text
+このコード内でのAPIキーの扱いが安全か確認して。ハードコーディングや誤って公開される危険な箇所があれば、環境変数化する形で直して。
+```
+### 58. Record &amp; Replay — 例1
+```text
+今から手順を録画で見せます。関係ない画面は閉じ、通知もオフにしてから始めます。録画が終わったら、その内容を再現できる再利用可能なスキルとして作成して。
+```
+### 59. Record &amp; Replay — 例2
+```text
+さっき録画から作ったスキルを、録画時とは別のデータを使って一度テスト実行して。想定通りの結果になったか、途中で止まった箇所がなかったか教えて。
+```
+### 60. Record &amp; Replay — 例3
+```text
+このスキルの中身を確認して、録画時の日付やファイル名がそのまま固定値になっている箇所を、毎回実行時に指定できる項目に書き換えて。
+```
+## コミュニティ精鋭
+### 61. Matt Pocock's Skills — 例1
+```text
+作りたいものはあるのですが、要件がまだ固まっていません。1つずつ質問しながら壁打ち形式で要件を明確にしていってください。対象ユーザー・解決したい課題・完成の条件が見えるまで進めて。
+```
+### 62. Matt Pocock's Skills — 例2
+```text
+このプロジェクトに新しい機能を追加します。テスト駆動開発(TDD)のやり方で、先にテストを書いてから実装を進めて。テストが通ることを確認してから完了報告して。
+```
+### 63. Matt Pocock's Skills — 例3
+```text
+この設計・計画案を見て、曖昧な部分やまだ詰め切れていない部分をインタビュー形式で質問して。より明確で鋭い計画になるまで、遠慮なく突っ込んで。
+```
+### 64. Superpowers — 例1
+```text
+このタスクを、いきなり実装に入らずに計画→実装→レビュー→検証の流れで進めて。各段階が終わったら一度区切りを教えてから次に進んで。
+```
+### 65. Superpowers — 例2
+```text
+この設計に対して、あえて反対の立場（この設計だとうまくいかない、という前提）からレビューして。見落としているリスクや弱点があれば洗い出して。
+```
+### 66. Superpowers — 例3
+```text
+この実装を実際にブラウザで操作して動作確認して。見た目の崩れや操作時のエラーがあれば、その場で修正まで進めて。
+```
+### 67. Context7 — 例1
+```text
+このライブラリを使う前に、Context7で最新の公式ドキュメントを参照して。学習データの古い情報と食い違いがないか確認し、バージョンが変わっていればその点も教えてから実装を進めて。
+```
+### 68. Context7 — 例2
+```text
+このエラーが、使っているライブラリのバージョン違いによるものか確認して。最新ドキュメントと照らし合わせて、原因がバージョン差異でなければ他の可能性も探って。
+```
+### 69. Context7 — 例3
+```text
+このコードで使われているAPIが、最新のドキュメント上で非推奨（deprecated）になっていないか確認して。なっていれば、推奨されている置き換え方法も教えて。
+```
+### 70. Firecrawl — 例1
+```text
+このURLの内容を、AIが読みやすい構造化された形式（見出し・本文・リンク）で取得して。取得した内容から、要点を3〜5行で教えて。
+```
+### 71. Firecrawl — 例2
+```text
+この競合数社の料金ページをスクレイピングして、プラン名・価格・主な機能が一目で分かる比較表にして。自社のプランも同じ表に並べて。
+```
+### 72. Firecrawl — 例3
+```text
+このサイト内を検索して、〇〇に関連するページをすべて洗い出して。それぞれ何が書かれているか要約し、重複している情報があれば教えて。
+```
+### 73. Composio — 例1
+```text
+この作業を進めるのに必要な外部サービス（複数ある想定）との連携を、Composio経由でまとめて設定して。認証が必要なものは、どの手順で進めればいいか案内して。
+```
+### 74. Composio — 例2
+```text
+現在Composio経由で接続しているサービスの一覧を確認して。直近しばらく使っていなさそうなものがあれば教えて、外していいか判断材料も添えて。
+```
+### 75. Composio — 例3
+```text
+このタスクを、複数のSaaSをまたいで自動化する方法を提案して。どのサービスのどの機能を、どんな順番でつなげば実現できるか、具体的な手順で示して。
+```
+### 76. GitNexus — 例1
+```text
+このリポジトリ全体を知識グラフ化して。主要なモジュール同士がどう依存し合っているか教えて、特に依存が集中していて変更時にリスクが高そうな箇所があれば指摘して。
+```
+### 77. GitNexus — 例2
+```text
+この関数を変更した場合、直接・間接的に影響が及ぶ範囲を洗い出して。テストを重点的に見ておくべき箇所があれば併せて教えて。
+```
+### 78. GitNexus — 例3
+```text
+このコードベースの全体構造を、今日から参加するメンバー向けに説明して。どこから読み始めるとよいか、主要なディレクトリの役割も含めて教えて。
+```
+## 最新トレンド
+### 79. ChatCut — 例1
+```text
+Codexをビデオエディターに変えて、読んで。導入できたら、この動画素材を読み込んで中身を確認してから、どう編集したいか聞いて。
+```
+### 80. ChatCut — 例2
+```text
+この動画素材を確認して、しゃべっていない・間延びしている区間を検出して削り、テンポの良い状態で書き出して。カットしすぎて不自然にならないよう、前後に少し余白を残して。
+```
+### 81. ChatCut — 例3
+```text
+この台本をもとに、字幕付きの短尺動画に編集して。台本の言葉と実際の音声がズレていないか確認しながら、読みやすい位置に字幕を配置して。
+```
+### 82. Build iOS Apps — 例1
+```text
+このiOSアプリをアプリ内ブラウザで開いて、主要な画面を一通り操作して動作確認して。エラーや表示崩れがあれば、どの画面のどの操作で起きたか教えて。
+```
+### 83. Build iOS Apps — 例2
+```text
+このSwiftUIの画面をプレビューして、端末サイズを変えたときにレイアウトが崩れないか確認して。崩れている箇所があれば、その場で修正まで進めて。
+```
+### 84. Build iOS Apps — 例3
+```text
+この修正をホットリロードで反映して、変更前後でどう見た目が変わったか比較できる形で見せて。
+```
+### 85. codex-plugin-cc — 例1
+```text
+/codex:review を使って、今Claude Codeで進めているこの実装をCodexにレビューさせて。指摘があれば、Claude Code側でどう直すべきか一緒に整理して。
+```
+### 86. codex-plugin-cc — 例2
+```text
+/codex:rescue を使って、このバグの調査をCodexに任せて。調査が終わるまでの間、私はClaude Codeで別の作業を進めておく。
+```
+### 87. codex-plugin-cc — 例3
+```text
+/codex:status で、バックグラウンドで動いているCodexのジョブの進捗を確認して。終わっていれば /codex:result で結果を受け取って。
+```
+### 88. Codex profiles — 例1
+```text
+自分のCodexプロフィールを確認して、直近の活用状況（連続記録・トークン量・よく使っているプラグイン）を教えて。使い方に偏りがあれば指摘して。
+```
+### 89. Codex profiles — 例2
+```text
+自分がよく使っているプラグインの傾向を教えて。その使い方から見て、他に試すと相性が良さそうなプラグインがあれば理由つきで提案して。
+```
+### 90. Codex profiles — 例3
+```text
+このプロフィールカードを、チームに共有しても恥ずかしくない見た目に整えて。個人的すぎる情報が含まれていれば教えて。
+```
+## まとめ
+
+以上、90個です。内訳：公式定番24個、職種特化18個、制作・自動化18個、コミュニティ精鋭18個、最新トレンド12個。
+
+</pre>
+<footer>AIエージェント/Kawaru ｜ このプレゼントは自由に使ってください</footer>
+<script>
+function copyTextWithFallback(text){
+  function fb(){try{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();
+    const ok=document.execCommand('copy');ta.remove();return ok;}catch(e){return false;}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){return navigator.clipboard.writeText(text).then(()=>true).catch(fb);}
+  return Promise.resolve(fb());
+}
+function showCopyResult(btn,ok){const o=btn.dataset.o||btn.textContent;btn.dataset.o=o;
+  btn.textContent=ok?'\u2714 コピーしました':'\u2716 コピー不可 → ⬇をご利用ください';setTimeout(()=>{btn.textContent=o;},ok?1600:3200);}
+async function copyPrompt(id,btn){const ok=await copyTextWithFallback(document.getElementById(id).textContent);showCopyResult(btn,ok);}
+function downloadText(id,fn,btn){try{const t=document.getElementById(id).textContent;const b=new Blob([t],{type:'text/plain;charset=utf-8'});
+  const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(u),2000);}catch(e){if(btn){const o=btn.textContent;btn.textContent='\u2716 保存不可';setTimeout(()=>{btn.textContent=o;},3000);}}}
+</script>
+</main></div></body></html>
